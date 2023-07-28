@@ -11,6 +11,7 @@ func main() {
 
 func hello(i int) {
 	println("hello" + fmt.Sprint(i))
+	CalSquare()
 }
 
 func HelloGoRoutine() {
@@ -24,7 +25,7 @@ func HelloGoRoutine() {
 
 func CalSquare() {
 	src := make(chan int)
-	dest := make(chan int)
+	dest := make(chan int, 3)
 	go func() {
 		defer close(src)
 		for i := 0; i < 10; i++ {
